@@ -1,6 +1,8 @@
 (ns com.terry.meta-handlers.front-controller-test
   (:use clojure.test)
-  (:require [com.terry.meta-handlers.front-controller :as fc]))
+  (:require [com.terry.meta-handlers.front-controller :as fc]
+            [com.terry.meta-handlers.handlers1 :as h1]
+            [com.terry.meta-handlers.handlers2 :as h2]))
 
 (deftest test-handle []
   (let [namespaces ['com.terry.meta-handlers.handlers1 'com.terry.meta-handlers.handlers2]]

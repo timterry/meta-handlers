@@ -46,10 +46,11 @@
   "Find a controller mapping that matches the specified http method and url"
   [url http-method mapping]
   (when-let [mapping-url (http-method (:meta-data mapping))]
-    (when (= mapping-url url)
-      (:function mapping))
-    (when (and (instance? java.util.regex.Pattern mapping-url) (re-matches mapping-url url))
-      (:function mapping))))
+    (cond
+      (= mapping-url url)
+        (:function mapping)
+      (and (instance? java.util.regex.Pattern mapping-url) (re-matches mapping-url url))
+        (:function mapping))))
 
 (defn- find-handler
   "find a handler that matches the request using the specified mappings"
