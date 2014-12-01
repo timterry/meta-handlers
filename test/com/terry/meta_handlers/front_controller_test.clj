@@ -13,3 +13,10 @@
         nses ['com.terry.meta-handlers.handlers1 'com.terry.meta-handlers.handlers2]]
     (time (doall (for [i (range 1000)] (fc/handle req nses :cache? true))))
     0))
+
+(deftest test-perf2 []
+  (let [namespaces ['com.terry.meta-handlers.perf-test-handlers]]
+    (println "Time for 1000 matches")
+       (time
+           (dotimes [_ 1000]
+             (fc/handle {:uri "/e.html" :request-method :get} namespaces)))))
